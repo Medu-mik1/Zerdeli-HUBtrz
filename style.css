@@ -1,0 +1,568 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f9f4;
+    color: #1b3b1b;
+    line-height: 1.6;
+}
+
+.auth-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.auth-modal {
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 10px 25px rgba(0, 100, 0, 0.15);
+    border-top: 5px solid #2e7d32;
+    text-align: center;
+}
+
+.auth-modal h2 {
+    color: #1b3b1b;
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.auth-modal p {
+    color: #555;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+
+.auth-modal form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.auth-modal input {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #c8e6c9;
+    background: #f9fbf9;
+    color: #1b3b1b;
+    font-size: 1rem;
+}
+
+.auth-modal input:focus {
+    outline: none;
+    border-color: #2e7d32;
+}
+
+.avatar-select-box {
+    text-align: left;
+    background: #f9fbf9;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #c8e6c9;
+}
+
+.avatar-select-box label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #2e7d32;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.avatar-options {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-around;
+}
+
+.avatar-options label {
+    font-weight: normal;
+    color: #333;
+    cursor: pointer;
+}
+
+.auth-modal button {
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+
+.auth-modal button:hover {
+    background: #1b5e20;
+}
+
+header {
+    background: #ffffff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #e8f5e9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-placeholder {
+    width: 45px;
+    height: 45px;
+    background: #2e7d32;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 0.75rem;
+}
+
+.school-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #2e7d32;
+}
+
+nav {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.nav-link:hover, .nav-link.active {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+.admin-nav-btn {
+    background: #1b3b1b;
+    color: white !important;
+}
+.admin-nav-btn:hover {
+    background: #2e7d32 !important;
+}
+
+.user-profile {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2e7d32;
+    background: #e8f5e9;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.page {
+    display: none;
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    border: 1px solid #e8f5e9;
+}
+
+.page.active-page {
+    display: block;
+}
+
+h2 {
+    color: #2e7d32;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    border-bottom: 2px solid #e8f5e9;
+    padding-bottom: 0.5rem;
+}
+
+.hero-section {
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.hero-image-box {
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.president-badge {
+    background: #2e7d32;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+}
+
+.photo-frame {
+    width: 180px;
+    height: 220px;
+    background: #e8f5e9;
+    border: 3px solid #2e7d32;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2e7d32;
+    box-shadow: 0 4px 10px rgba(46, 125, 50, 0.1);
+}
+
+.hero-content h1 {
+    font-size: 2.2rem;
+    color: #1b3b1b;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    color: #444;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.achievements-section {
+    margin-top: 2rem;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.achieve-card {
+    background: #f9fbf9;
+    border: 1px solid #c8e6c9;
+    padding: 1.5rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.achieve-avatar {
+    width: 50px;
+    height: 50px;
+    background: #2e7d32;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 1rem auto;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.achieve-card h3 {
+    color: #1b3b1b;
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+}
+
+.achieve-class {
+    color: #2e7d32;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.achieve-desc {
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.event-card-modern {
+    background: #f9fbf9;
+    border: 1px solid #c8e6c9;
+    padding: 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.event-card-modern h3 {
+    color: #1b3b1b;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.event-date {
+    color: #2e7d32;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 0.8rem;
+}
+
+.event-desc {
+    color: #555;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.event-go-btn, .submit-btn {
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+    text-align: center;
+}
+
+.event-go-btn:hover, .submit-btn:hover {
+    background: #1b5e20;
+}
+
+.form-group {
+    margin-bottom: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #1b3b1b;
+    font-size: 0.95rem;
+}
+
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid #c8e6c9;
+    background: #f9fbf9;
+    color: #1b3b1b;
+    font-size: 1rem;
+}
+
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: #2e7d32;
+}
+
+.form-group textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+.success-box {
+    display: none;
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.ideas-feed {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.idea-item {
+    background: #f9fbf9;
+    border: 1px solid #c8e6c9;
+    padding: 1.2rem;
+    border-radius: 10px;
+}
+
+.idea-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.idea-text {
+    color: #333;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+.idea-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.action-btn {
+    background: none;
+    border: 1px solid #c8e6c9;
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: #333;
+    transition: all 0.2s;
+}
+
+.action-btn:hover {
+    background: #e8f5e9;
+    border-color: #2e7d32;
+}
+
+.profile-card-full {
+    background: #f9fbf9;
+    border: 1px solid #c8e6c9;
+    padding: 2rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.profile-big-avatar {
+    width: 80px;
+    height: 80px;
+    background: #2e7d32;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+}
+
+.profile-info-box h3 {
+    color: #1b3b1b;
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+}
+
+.profile-info-box p {
+    color: #555;
+    font-size: 1rem;
+}
+
+.admin-section-card {
+    background: #f9fbf9;
+    border: 1px solid #c8e6c9;
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.admin-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.admin-item {
+    background: #f9fbf9;
+    border: 1px solid #c8e6c9;
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-btn {
+    background: #d32f2f;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+.delete-btn:hover {
+    background: #c62828;
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: #666;
+    font-size: 0.9rem;
+    background: #ffffff;
+    border-top: 1px solid #e8f5e9;
+    margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+    }
+    header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    nav {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .profile-card-full {
+        flex-direction: column;
+        text-align: center;
+    }
+}

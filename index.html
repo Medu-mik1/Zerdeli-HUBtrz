@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zerdeli Presidential Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Тіркелу және Профиль модальды терезесі -->
+    <div id="authOverlay" class="auth-overlay">
+        <div class="auth-modal">
+            <h2>Zerdeli Hub-қа қош келдіңіз</h2>
+            <p>Жалғастыру үшін мәліметтеріңізді енгізіңіз</p>
+            <form onsubmit="handleAuth(event)">
+                <input type="text" id="authName" placeholder="Аты-жөніңіз (Мысалы: Сапарбаев Медеу)" required>
+                <input type="text" id="authClass" placeholder="Сыныбыңыз (Мысалы: 10А)" required>
+                <input type="email" id="authEmail" placeholder="Gmail поштаңыз" required>
+                
+                <div class="avatar-select-box">
+                    <label>Аватар түрін таңдаңыз:</label>
+                    <div class="avatar-options">
+                        <label><input type="radio" name="avatar" value="👨‍💻" checked> 👨‍💻 IT</label>
+                        <label><input type="radio" name="avatar" value="🚀"> 🚀 Start</label>
+                        <label><input type="radio" name="avatar" value="⭐"> ⭐ Star</label>
+                        <label><input type="radio" name="avatar" value="🔥"> 🔥 Pro</label>
+                    </div>
+                </div>
+
+                <button type="submit">Тіркелу / Кіру</button>
+            </form>
+        </div>
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <div class="logo-placeholder">Зерделі</div>
+            <span class="school-name">Zerdeli School</span>
+        </div>
+        <nav>
+            <a href="#home" class="nav-link active">Басты бет</a>
+            <a href="#events" class="nav-link">Іс-шаралар</a>
+            <a href="#register" class="nav-link">Жазылу</a>
+            <a href="#ideas" class="nav-link">Чат & Пікірлер</a>
+            <a href="#profile" class="nav-link">Профиль</a>
+            <!-- Админ панель тек Сапарбаев Медеу үшін шығады -->
+            <a href="#admin" class="nav-link admin-nav-btn" id="adminNavBtn" style="display: none;">⚙️ Админ Панель</a>
+        </nav>
+        <div id="userProfileHeader" class="user-profile"></div>
+    </header>
+
+    <div class="container">
+        
+        <!-- Басты бет -->
+        <section id="home" class="page active-page">
+            <div class="hero-section">
+                <div class="hero-image-box">
+                    <div class="president-badge">Мектеп Президенті кандидаты</div>
+                    <div class="photo-frame">Медеу</div>
+                </div>
+                <div class="hero-content">
+                    <h1>Болашақ өз қолымызда!</h1>
+                    <p>Құрметті "Зерделі" мектебінің оқушылары! Мен Сапарбаев Медеу — мектеп президенттігіне кандидат ретінде мектебімізді одан әрі цифрландыруға, жаңа мүмкіндіктер мен ашық пікір алаңын құруға уәде беремін. Бұл сайт — біздің ортақ дауысымыз бен бастамаларымыздың платформасы.</p>
+                </div>
+            </div>
+
+            <div class="achievements-section">
+                <div class="section-header-flex">
+                    <h2>Мектептің мақтаныштары мен үздіктері</h2>
+                </div>
+                <!-- Динамикалық түрде админ қосатын және оқушылар көретін үздіктер тізімі -->
+                <div id="achievementsGrid" class="achievements-grid">
+                    <!-- JavaScript арқылы толығады -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Іс-шаралар беті -->
+        <section id="events" class="page">
+            <h2>Жақында болатын іс-шаралар</h2>
+            <div id="eventsContainer" class="events-grid">
+                <!-- JavaScript арқылы динамикалық түрде қосылады/өшіріледі -->
+            </div>
+        </section>
+
+        <!-- Тіркелу беті -->
+        <section id="register" class="page">
+            <h2>Іс-шараларға тіркелу</h2>
+            <form id="eventRegForm" onsubmit="submitEventRegistration(event)">
+                <div class="form-group">
+                    <label>Таңдалған іс-шара:</label>
+                    <select id="selectedEvent" required>
+                        <option value="">Іс-шараны таңдаңыз...</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Аты-жөніңіз және сыныбыңыз:</label>
+                    <input type="text" id="regStudentInfo" placeholder="Мысалы: Сапарбаев Медеу 10А" required>
+                </div>
+                <div class="form-group">
+                    <label>Неліктен бұл іс-шараға қатысқыңыз келеді?</label>
+                    <textarea id="regReason" placeholder="Себебін толық жазыңыз..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Тіркелуді аяқтау</button>
+            </form>
+            <div id="regSuccess" class="success-box">Тіркеліміз сәтті қабылданды және Telegram ботқа жіберілді!</div>
+        </section>
+
+        <!-- Чат және Пікірлер -->
+        <section id="ideas" class="page">
+            <h2>Оқушылардың чаты мен ұсыныстары</h2>
+            <form id="ideaForm" onsubmit="submitIdea(event)">
+                <div class="form-group">
+                    <textarea id="ideaText" placeholder="Ойыңызды бөлісіңіз немесе сұрақ қойыңыз..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Хабарлама жіберу</button>
+            </form>
+
+            <div id="ideasContainer" class="ideas-feed"></div>
+        </section>
+
+        <!-- Профиль беті -->
+        <section id="profile" class="page">
+            <h2>Менің Профилім</h2>
+            <div class="profile-card-full">
+                <div id="profileAvatarDisplay" class="profile-big-avatar">👨‍💻</div>
+                <div class="profile-info-box">
+                    <h3 id="profileNameDisplay">Аты-жөні</h3>
+                    <p id="profileClassDisplay">Сыныбы</p>
+                    <p id="profileEmailDisplay">Поштасы</p>
+                </div>
+            </div>
+            <div style="margin-top: 2rem; text-align: center;">
+                <button class="delete-btn" onclick="logoutUser()" style="padding: 0.8rem 1.5rem; font-size: 1rem;">Аккаунттан шығу (Басқа ақпаратпен кіру)</button>
+            </div>
+        </section>
+
+        <!-- Админ панель (Тек Сапарбаев Медеу үшін) -->
+        <section id="admin" class="page">
+            <h2>⚙️ Медеудің Басқару Панелі (Admin)</h2>
+            <div class="admin-box">
+                
+                <!-- 1. Іс-шара қосу -->
+                <div class="admin-section-card">
+                    <h3>➕ Жаңа іс-шара қосу</h3>
+                    <form onsubmit="addNewEvent(event)" style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1rem;">
+                        <input type="text" id="newEventTitle" placeholder="Іс-шара атауы" required style="padding: 0.8rem; border-radius: 8px; border: 1px solid #c8e6c9;">
+                        <input type="text" id="newEventDate" placeholder="Күні мен уақыты (Мысалы: 15 қазан, 15:00)" required style="padding: 0.8rem; border-radius: 8px; border: 1px solid #c8e6c9;">
+                        <textarea id="newEventDesc" placeholder="Сипаттамасы" required style="padding: 0.8rem; border-radius: 8px; border: 1px solid #c8e6c9; height: 80px;"></textarea>
+                        <button type="submit" class="submit-btn">Іс-шараны қосу</button>
+                    </form>
+                </div>
+
+                <!-- 2. Үздік оқушы қосу -->
+                <div class="admin-section-card" style="margin-top: 2rem;">
+                    <h3>⭐ Басты бетке үздік оқушы қосу</h3>
+                    <form onsubmit="addNewAchievement(event)" style="display: flex; flex-direction: column; gap: 0.8rem; margin-top: 1rem;">
+                        <input type="text" id="newAchieveName" placeholder="Оқушы аты-жөні" required style="padding: 0.8rem; border-radius: 8px; border: 1px solid #c8e6c9;">
+                        <input type="text" id="newAchieveClass" placeholder="Сыныбы (Мысалы: 10А)" required style="padding: 0.8rem; border-radius: 8px; border: 1px solid #c8e6c9;">
+                        <input type="text" id="newAchieveDesc" placeholder="Жетістігі (Мысалы: Олимпиада жеңімпазы)" required style="padding: 0.8rem; border-radius: 8px; border: 1px solid #c8e6c9;">
+                        <button type="submit" class="submit-btn">Оқушыны қосу</button>
+                    </form>
+                </div>
+
+                <h3 style="margin-top: 2rem;">Мектеп үздіктерін басқару (Өшіру)</h3>
+                <div id="adminAchievementsList" class="admin-list"></div>
+
+                <h3 style="margin-top: 2rem;">Іс-шараларды басқару (Өшіру)</h3>
+                <div id="adminEventsList" class="admin-list"></div>
+
+                <h3 style="margin-top: 2rem;">Барлық түскен тіркелулер тізімі</h3>
+                <div id="adminRegistrationsList" class="admin-list"></div>
+
+                <h3 style="margin-top: 2rem;">Чат пен пікірлерді басқару</h3>
+                <div id="adminIdeasContainer" class="admin-list"></div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Zerdeli School | Сапарбаев Медеу – Мектеп президенттігіне кандидат</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
